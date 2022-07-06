@@ -26,20 +26,20 @@ class MainActivity : ComponentActivity() {
             ComposeTutorialTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting(Message("Android", "Dragos"))
+                    MessageCard(Message("Cezara", "Women are hot", R.drawable.niko))
                 }
             }
         }
     }
 }
 
-data class Message(val name1: String, val name2: String)
+data class Message(val author: String, val body: String, val avatar: Int)
 
 @Composable
-fun Greeting(message: Message) {
+fun MessageCard(message: Message) {
     Row(modifier = Modifier.padding(all = 8.dp)) {
         Image(
-            painter = painterResource(R.drawable.ic_launcher_background),
+            painter = painterResource(id = message.avatar),
             contentDescription = null,
             modifier = Modifier
                 .size(40.dp)
@@ -51,7 +51,7 @@ fun Greeting(message: Message) {
 
         Column {
             Text(
-                text = message.name1,
+                text = message.author,
                 color = MaterialTheme.colors.secondaryVariant,
                 style = MaterialTheme.typography.subtitle2
             )
@@ -60,7 +60,8 @@ fun Greeting(message: Message) {
 
             Surface(shape = MaterialTheme.shapes.medium, elevation = 1.dp) {
                 Text(
-                    text = message.name2,
+                    text = message.body,
+                    modifier = Modifier.padding(all = 4.dp),
                     style = MaterialTheme.typography.body2
                 )
             }
@@ -78,8 +79,14 @@ fun Greeting(message: Message) {
 fun DefaultPreview() {
     ComposeTutorialTheme {
         // A surface container using the 'background' color from the theme
-        Surface(color = MaterialTheme.colors.background) {
-            Greeting(Message("Android", "Dragos"))
+        Surface(color = MaterialTheme.colors.background/*, modifier = Modifier.fillMaxSize()*/) {
+            MessageCard(
+                Message(
+                    "Cezara",
+                    "Women are hot, im gay \uD83E\uDD75",
+                    R.drawable.niko
+                )
+            )
         }
     }
 }
