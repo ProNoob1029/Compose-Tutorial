@@ -7,7 +7,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.composetutorial"
+        applicationId "com.phoenixro026.composetutorial"
         minSdk 21
         targetSdk 32
         versionCode 1
@@ -35,14 +35,13 @@ android {
     buildFeatures {
         compose true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.2.0'
+    }
     packagingOptions {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = '1.2.0'
-        kotlinCompilerVersion = kotlinVersion
     }
 }
 
